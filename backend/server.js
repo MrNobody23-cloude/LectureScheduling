@@ -13,6 +13,8 @@ const db = require("./config/db");
 app.use(cors());
 app.use(express.json());
 
+app.get("/api/test", (req, res) => res.json({ status: "ok" }));
+
 app.use("/api/courses", courseRoutes);
 app.use("/api/lectures", lectureRoutes);
 app.use("/api/instructors", instructorRoutes);
