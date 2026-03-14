@@ -7,7 +7,14 @@ export default function CourseList() {
     useEffect(() => {
         fetch(API + "/courses")
             .then((res) => res.json())
-            .then((data) => setCourses(data));
+            .then((data) => {
+                if (Array.isArray(data)) {
+                    setCourses(data);
+                } else {
+                    setCourses([]);
+                }
+            })
+            .catch(() => setCourses([]));
     }, []);
 
     return (
